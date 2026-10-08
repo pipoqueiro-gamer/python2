@@ -1,21 +1,18 @@
 lista_de_compras = []
-conta = 0.0  # Inicializa a variável do total geral
+conta = 0.0
 
 while True:
-    item = input("---digite um item para adicionar à sua lista de compras (ou digite 'sair' para encerrar)---\n")
+    print("--- digite um item para adicionar à lista (ou 'sair' para encerrar) ---")
+    item = input()
     
-    if item.lower() == 'sair':
+    if item == "sair" or item == "SAIR" or item == "Sair":
         break
         
-    try:
-        valores = float(input("digite o valor do item: "))
-        quantidade = int(input("digite a quantidade do item: "))
-    except ValueError:
-        print("Valores ou quantidade inválidos, tente novamente.\n")
-        continue
+    valores = float(input("digite o valor do item: "))
+    quantidade = int(input("digite a quantidade do item: "))
         
     total_item = valores * quantidade
-    conta += total_item
+    conta = conta + total_item
     
     lista_de_compras.append({
         "item": item,
@@ -24,9 +21,11 @@ while True:
         "total_item": total_item
     })
 
-# O loop de impressão fica fora do 'while' para mostrar tudo apenas no final
-print("\n=== SUA LISTA DE COMPRAS ===")
+print() # Deixa uma linha em branco de um jeito bem simples
+print("=== SUA LISTA DE COMPRAS ===")
 for produto in lista_de_compras:
-    print(f"Item: {produto['item']} | Valor: R$ {produto['valor']:.2f} | Qtd: {produto['quantidade']} | Total do Item: R$ {produto['total_item']:.2f}")
+    print(f"Item: {produto['item']} | Valor: R$ {produto['valor']} | Qtd: {produto['quantidade']} | Total: R$ {produto['total_item']}")
 
-print(f"\nValor total da conta: R$ {conta:.2f}")
+print() 
+print(f"Valor total da conta: R$ {conta}")
+
